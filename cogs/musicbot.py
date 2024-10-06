@@ -9,11 +9,11 @@ import discord.opus
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
-opus_path = r'D:\Program (Software)\Visual Studio Code CODE\discord-bot\shiroz\discordopus\opusfile-0.12_2\opusfile-0.12\win32\libopus-0/libopus-0.dll'
+opus_path = r'/usr/lib/x86_64-linux-gnu/libopus.so.0.9.0'
 discord.opus.load_opus(opus_path)
 
 if not discord.opus.is_loaded():
-    discord.opus.load_opus(r'D:\Program (Software)\Visual Studio Code CODE\discord-bot\shiroz\discordopus\opusfile-0.12_2\opusfile-0.12\win32\libopus-0/libopus-0.dll')
+    discord.opus.load_opus(r'/usr/lib/x86_64-linux-gnu/libopus.so.0.9.0')
 
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
@@ -46,8 +46,8 @@ class Music(commands.Cog):
 
     async def delete_all_music_files(self):
     # Specify the folder where your mp4 files are stored
-        # music_folder = "D:\\Program (Software)\\Visual Studio Code CODE\\discord-bot\\shiroz" # Delete # for release code
-        music_folder = "D:\\Program (Software)\\Visual Studio Code CODE\\discord-bot\\shiroz\\dist" #Delete #for exe file
+        music_folder = "/DiscordServerBot" # Delete # for release code
+        # music_folder = "/dist" #Delete #for exe file
         # music_folder = "D:\\Program (Software)\\Visual Studio Code CODE\\discord-bot" #Delete # for debugging
         
         # Delete only mp4 files in the folder
@@ -105,7 +105,7 @@ class Music(commands.Cog):
 
             ctx.voice_client.play(
                 discord.FFmpegPCMAudio(
-                    executable="D:\\Program (Software)\\Visual Studio Code CODE\\discord-bot\\shiroz\\youtubemusic\\ffmpeg-6.1-full_build\\bin\\ffmpeg.exe",
+                    executable="/usr/bin/ffmpeg",
                     source=filename,
                     options=ffmpeg_options
                 ),
